@@ -1,6 +1,6 @@
 # Multilinear model demo
 
-This project demonstrates how to load and evaluate a multilinear model for different skull shapes and facial soft tissue thicknesses (FSTT) and thereby generating meshes for the skull and skin surfaces.
+This project demonstrates how to load and evaluate a multilinear model for different skull shapes and facial soft tissue thicknesses (FSTT) and thereby generating meshes for the skull and skin surfaces. Try the [online demo](http://graphics.uni-bielefeld.de/publications/vcbm18/).
 
 In this repository we provide the full source code for evaluating the multilinear model as well as the data for a  **reduced** multilinear model with 7 parameters for skull shape and 4 parameters for FSTT distribution. Your can download the full model [here](https://pub.uni-bielefeld.de/record/2930619).
 
