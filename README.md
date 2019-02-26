@@ -1,76 +1,56 @@
-Multilinear model demo
-======================
+# Multilinear model demo
 
-This application demonstrates how to load and evaluate a multilinear model for different skull shape and FSTT distribution parameters and thereby generating meshes for skull and skin surface.
+This project demonstrates how to load and evaluate a multilinear model for different skull shapes and facial soft tissue thicknesses (FSTT) and thereby generating meshes for the skull and skin surfaces.
 
-We provide different multilinear models, that where all trained on the same training data:
-  - a full model with 64 parameters for skull shape and 32 parameters for FSTT distribution
-  - a restricted model with 16 parameters for skull shape and 16 parameters for FSTT distribution
-  - a restricted model with 7 parameters for skull shape and 4 parameters for FSTT distribution
-The models can be found in mlm_models.zip, please see the README file therein.
+In this repository we provide the full source code for evaluating the multilinear model as well as the data for a  **reduced** multilinear model with 7 parameters for skull shape and 4 parameters for FSTT distribution. Your can download the full model [here](https://pub.uni-bielefeld.de/record/2930619).
 
 
-Building under Linux/MacOS
---------------------------
+## References
 
-Inside the top-level directory, execute the following commands:
+This project is based on these two papers:
+- Jascha Achenbach, Robert Brylka, Thomas Gietzen, Katja zum Hebel, Elmar Schömer, Ralf Schulze, Mario Botsch, Ulrich Schwanecke:
+  [A Multilinear Model for Bidirectional Craniofacial Reconstruction](http://graphics.uni-bielefeld.de/publications/vcbm18.pdf),
+  Proceedings of Eurographics Workshop on Visual Computing for Biology and Medicine, 2018, pp. 67-76.
+- Thomas Gietzen, Robert Brylka, Jascha Achenbach, Katja zum Hebel, Elmar Schömer, Mario Botsch, Ulrich Schwanecke, Ralf Schulze:
+  [A method for automatic forensic facial reconstruction based on dense statistics of soft tissue thickness](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210257),
+  PLoS ONE, 14(1), 2019. 
 
-    mkdir build
-    cd build
-    cmake ..
-    make
-
-
-Using Xcode under MacOS
------------------------
-
-If you prefer to use Xcode on Mac, do the following:
-
-    mkdir build
-    cd build
-    cmake -G Xcode ..
-
-and then open the generated Xcode project.
+Please cite the first paper if you use the code in your research project.
 
 
-Building and running under Windows
-----------------------------------
+## Quickstart
 
-* Download and install [Visual Studio Community](https://www.visualstudio.com/vs/community/)
-* Make sure that you check "Desktop development with C++" during installation
-* Download [cmake](https://cmake.org/download/) via the platform windows .zip version and extract it somewhere
-* Create an empty build folder inside the project's top-level directory
-* Start cmake-gui.exe (located in cmake's bin folder)
-* Specify the top-level directory as source directory (button Browse source...)
-* Specify the build folder as build directory (button Browse build...)
-* Select Configure using your Visual Studio Version as option.
-* When configuration is finished, select Generate.
-* Start Visual Studio Community
-* Open the project via File -> open -> project -> .sln in build folder
-* In the project explorer window on the right, right-click the project and set it as startup-project
-* Switch to release mode
-* The executable will need the path to the multilinear model as command line arguments. You can specify the argument via project -> properties -> debugging -> command arguments
-* Hit CTRL + F5 to build and run (or CTRL + SHIFT + B to build)
+The project is based on the [PMP library](http://www.pmp-library.org/) for mesh processing, visualization, and GUI. It is automatically downloaded as a git submodule.
+
+Fetch the repository:
+
+    $ git clone --recursive https://github.com/mbotsch/multilinear_heads.git
+
+Configure and build:
+
+    $ cd multilinear_heads && mkdir build && cd build && cmake .. && make
+
+Run the mesh processing app:
+
+    $ ./mlmviewer
 
 
-Documentation
--------------
+## Code Documentation
 
-Open the pre-built documentation from within the `build` directory via
+We provide a pre-built documentation in the `doc` directory:
 
-    firefox ../doc/index.html
+    firefox multilinear_heads/doc/index.html
 
 or using any other web browser.
 
-You can also build the HTML documentation on your own as long as you have [Doxygen](www.doxygen.org/) installed. To do so, still inside the directory `build`, execute the following command:
+You can also build the HTML documentation on your own as long as you have [Doxygen](www.doxygen.org/) installed:
 
-    make doc
+    cd multilinear_heads/build/ && make doc
 
-View the documentation by opening the file `html/index.html` with any web browser / HTML viewer. If you are into LaTeX, navigate into the directory `latex` and execute the command `make` to create a printable version of the documentation.
+View the documentation by opening the file `build/html/index.html` with any web browser.
 
 
-Running
--------
+## Running the Application
 
 After building (i.e. execution of `make`), still in the directory `build`, launch the program by executing the following command:
 
@@ -83,22 +63,7 @@ or
 which by default loads the restricted model with 7 parameters for skull shape and 4 parameters for FSTT distribution.
 
 
-Controls
---------
-
-* `Esc`: quit application.
-* GUI:
-  - Show/hide skin and skull meshes,
-  - vary transparency for skin mesh,
-  - vary skull and FSTT parameters,
-  - save meshes to disk into build folder,
-    - note that the saved meshes are named 'mesh_skin_N.off' and 'mesh_skull_N.off', while N is an enumerating counter
-  - reset parameters to default,
-  - use mouse controls to rotate and translate the meshes.
-
-
-License
--------
+## License
 
 Copyright (c) by Computer Graphics Group, Bielefeld University
 
