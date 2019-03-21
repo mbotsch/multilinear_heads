@@ -38,16 +38,21 @@ MLMViewer::MLMViewer(const char* title, int width, int height, bool showgui)
     show_skin_   = true;
     show_skull_  = true;
     show_points_ = false;
-    alpha_       = 0.8;
+    alpha_       = 1.0;
 
     conter_save_meshes_ = 1;
 
     // set colors and material
-    skin_.set_front_color(vec3(1.0, 0.87, 0.75));
-    skin_.set_diffuse(0.7);
+    skin_.set_front_color(vec3(1.0, 0.85, 0.8));
+    skin_.set_diffuse(0.6);
     skin_.set_specular(0.1);
+    skin_.set_shininess(50);
+
     skull_.set_front_color(vec3(0.7, 0.7, 0.7));
-    skull_.set_specular(0.2);
+    skull_.set_diffuse(0.8);
+    skull_.set_specular(0.1);
+    skull_.set_shininess(100);
+
     points_.set_front_color(vec3(0.8, 0.2, 0.2));
     points_.set_specular(0.0);
 }
