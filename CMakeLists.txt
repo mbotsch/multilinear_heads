@@ -37,7 +37,7 @@ if(WIN32)
 endif()
 
 if (EMSCRIPTEN)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -s ALLOW_MEMORY_GROWTH=1 -s USE_GLFW=3 -s WASM=0 -s USE_WEBGL2=1")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -s ALLOW_MEMORY_GROWTH=1 -s USE_GLFW=3 -s WASM=1 --no-heap-copy -s USE_WEBGL2=1")
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 
