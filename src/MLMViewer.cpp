@@ -32,6 +32,7 @@ MLMViewer::MLMViewer(const char* title, int width, int height, bool showgui)
     clear_draw_modes();
     add_draw_mode("Smooth Shading");
     add_draw_mode("Hidden Line");
+    add_draw_mode("Texture");
     set_draw_mode("Smooth Shading");
 
     // set default visibility
@@ -118,6 +119,14 @@ bool MLMViewer::load_mlm(const char* dir)
     mlm_.evaluate(skin_, skull_, w_skull_,  w_fstt_);
     update_meshes();
 
+
+    // load mat-cap
+    std::string mat1 = std::string(dir) + std::string("matcap-skin.png");
+    std::string mat2 = std::string(dir) + std::string("matcap-bone.png");
+    if (skin_.load_matcap(mat1.c_str()) &&  skull_.load_matcap(mat2.c_str()))
+    {
+        set_draw_mode("Texture");
+    }
 
     return true;
 }
