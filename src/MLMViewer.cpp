@@ -121,8 +121,8 @@ bool MLMViewer::load_mlm(const char* dir)
 
 
     // load mat-cap
-    std::string mat1 = std::string(dir) + std::string("matcap-skin.png");
-    std::string mat2 = std::string(dir) + std::string("matcap-bone.png");
+    std::string mat1 = std::string(dir) + std::string("matcap-skin.jpg");
+    std::string mat2 = std::string(dir) + std::string("matcap-bone.jpg");
     if (skin_.load_matcap(mat1.c_str()) &&  skull_.load_matcap(mat2.c_str()))
     {
         set_draw_mode("Texture");
